@@ -58,6 +58,54 @@ Tambien podemos utilizar `virt-install --help` para ver todas las opciones dispo
 ```bash	
 virt-install --connect qemu:///system --virt-type kvm --name prueba --cdrom /var/lib/libvirt/iso/alpine-virt-3.17.0-x86_64.iso --os-variant alpine3.17 --memory 1024 --vcpus 1 --disk size=4
 ``` 
-NOTA: si despues quiere seguir con la instalaciond de alpine, ejecitar setup-alpine
+NOTA: si despues quiere seguir con la instalación de alpine, ejecitar setup-alpine
 
 ![virt](image-1.png)
+
+
+### 2.2 COMPROBACIONES
+
+- Comprobar que la maquina esta corriendo
+
+```bash
+virsh list --all
+```
+- Acceder al terminal de una maquina
+
+```bash
+virt-viewer nombre_maquina
+```
+
+- La maquina se almacenará en /var/lib/libvirt/images
+```bash
+virsh domblklist nombre_maquina
+```
+- Apagar una maquina
+
+```bash
+virsh shutdown nombre_maquina
+```
+
+- Info de la maquina
+
+```bash
+virsh dominfo nombre_maquina
+```
+- Encender una maquina
+```bash
+virsh start nombre_maquina
+```
+---
+
+Imagina que quieres redimensionar el disco de la maquina, para ello debemos apagar la maquina y redimensionar el disco con el siguiente comando:
+
+```bash
+ls -l /var/lib/libvirt/images/nombre_maquina.qcow2
+qemu-img resize /var/lib/libvirt/images/nombre_maquina.qcow2 +2G
+# cambiar el nombre de la maquina por el nombre de TU maquina
+qemu-img info /var/lib/libvirt/images/nombre_maquina.qcow2
+```
+
+OTRAS COMANDOS UTILIZADS:
+
+
