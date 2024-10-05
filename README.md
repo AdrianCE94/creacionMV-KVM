@@ -27,3 +27,37 @@ Para crear una maquina virtual con la linea de comandos usaremos el comando virt
     - Tamaño de la memoria RAM: --memory
     - Numero de CPUs: --vcpus
     - Tamaño del disco duro: --disk size (se creara con la imagen del disco duro en /var/lib/libvirt/images)
+**_NOTA:_** Debemos tener la ISO en el directorio /var/lib/libvirt/iso (creamos el directorio)
+
+**_NOTA:_** Para ver todas las opciones disponibles usar el comando virt-install --help
+
+
+OPCIONES MAS UTILIZADAS:
+
+- --connect : Conectar a un hipervisor
+- --name : Nombre de la maquina
+- --memory : Tamaño de la memoria RAM
+- --disk : Tamaño del disco duro
+- --vcpus : Numero de CPUs
+- -c : ISO de instalación
+- --vnc : Conexión VNC
+- --os-variant : Variante de la maquina
+- --network : Conexión de red
+- --noautoconsole : No abrir la consola de la maquina
+- --hvm : Habilitar la virtualización completa
+- --keymap : Teclado
+
+Tambien podemos utilizar `virt-install --help` para ver todas las opciones disponibles.
+
+---
+
+### 2.1  EJEMPLOS
+
+- Crear una maquina llamada prueba , con una ISO alpine(variante alpine3.17) , 1GB de RAM, 1 CPU y 4GB de disco y 1 vcpu.(no indicamos la red porque se conectará a la default)
+
+```bash	
+virt-install --connect qemu:///system --virt-type kvm --name prueba --cdrom /var/lib/libvirt/iso/alpine-virt-3.17.0-x86_64.iso --os-variant alpine3.17 --memory 1024 --vcpus 1 --disk size=4
+``` 
+NOTA: si despues quiere seguir con la instalaciond de alpine, ejecitar setup-alpine
+
+![virt](image-1.png)
