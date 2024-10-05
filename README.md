@@ -9,7 +9,6 @@ apartado para ver como crear maquinas virtuales con KVM
 - 1.Crear maquina con virt-manager
 - 2.Crear maquina linea de comandos
 - 3.Crear maquina linea de comandos con fichero xml
-- 4.Modificar maquina
 
 
 # 1. Crear maquina con virt-manager
