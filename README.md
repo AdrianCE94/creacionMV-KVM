@@ -105,7 +105,7 @@ qemu-img resize /var/lib/libvirt/images/nombre_maquina.qcow2 +2G
 qemu-img info /var/lib/libvirt/images/nombre_maquina.qcow2
 ```
 
-OTRAS COMANDOS UTILIZADS:
+OTRAS COMANDOS UTILIZADOS:
 
 - virsh autostart nombre_maquina : Arrancar la maquina al inicio
 
