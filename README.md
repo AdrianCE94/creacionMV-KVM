@@ -108,4 +108,47 @@ qemu-img info /var/lib/libvirt/images/nombre_maquina.qcow2
 
 OTRAS COMANDOS UTILIZADS:
 
+- virsh autostart nombre_maquina : Arrancar la maquina al inicio
 
+- virsh reboot nombre_maquina : Reiniciar la maquina
+- virsh destroy nombre_maquina : Apagar la maquina
+- virsh suspend nombre_maquina : Suspender la maquina
+- virsh resume nombre_maquina : Reanudar la maquina
+- virsh undefine nombre_maquina --remove-all-storage nombre_maquina :Eliminar la maquina y su almacenamiento
+- virsh domifaddr nombre_maquina : Ver la IP de la maquina
+- virsh domblklis nombre_maquina : Ver el almacenamiento de la maquina
+
+# 3. Crear maquina linea de comandos con fichero xml
+
+Las caracteristicas , opciones y hardware se estructuran en ficheros XML.
+
+En el directorio /etc/libvirt/qemu/ encontraremos los ficheros XML de las maquinas virtuales.
+
+Obtener definición de una maquina:
+
+```bash
+virsh dumpxml nombre_maquina
+```
+
+Podemos copiar y editar el fichero XML de una maquina para crear otra maquina con las mismas caracteristicas.
+
+```bash
+virsh dumpxml nombre_maquina > nombre_maquina.xml
+```
+
+Previamente hay que crear el disco virtual,especificando el pool de destino, nombre , tamaño y formato.
+
+```bash
+virsh vol-create-as iso nombre_maquina.qcow2 4G --format qcow2
+```
+
+Crear la maquina con el fichero XML
+
+```bash
+virsh define nombre_maquina.xml
+```
+Iniciar la maquina
+
+```bash
+virsh start nombre_maquina
+```
